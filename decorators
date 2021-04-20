@@ -1,0 +1,40 @@
+#hackerrank
+import operator
+from collections import defaultdict
+def person_lister(f):
+    def inner(people):
+        
+        #people.sort(key=itemgetter(2))
+        o = defaultdict(list)
+        for i in range(len(people)):
+            if int(people[i][2]) not in o:
+                o[int(people[i][2])] = [people[i]]
+            else:
+                o[int(people[i][2])].append(people[i])
+        
+        s = sorted(o.items(), key = lambda i: i[0])
+        idx=0
+        for i in range(len(s)):
+            for y in range(len(s[i][1])):
+                people[idx] = s[i][1][y]
+                idx+=1     
+        for i in range(len(people)):
+            a=""
+            g=people[i][-1]
+            if g == "M":
+                a+="Mr. "
+            else:
+                a+="Ms. "
+            a += people[i][0] +" "+ people[i][1]
+            people[i]=a
+        return people
+        # complete the function
+    return inner
+
+@person_lister
+def name_format(person):
+    return ("Mr. " if person[3] == "M" else "Ms. ") + person[0] + " " + person[1]
+
+if __name__ == '__main__':
+    people = [input().split() for i in range(int(input()))]
+    print(*name_format(people), sep='\n')
