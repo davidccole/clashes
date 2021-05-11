@@ -1,0 +1,6 @@
+#shortest way to validate IP
+k=input().split('.')
+r=0
+for x in k:
+ if len(k)!=4or int(x)>255or int(x)<0:r=1 
+print(["NOK","OK"][r<1])
