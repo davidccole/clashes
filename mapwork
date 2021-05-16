@@ -1,0 +1,11 @@
+from itertools import product
+numlists,mod = map(int,input().split())
+#print(numlists,type(numlists),mod,type(mod))
+alllists=[]
+
+for i in range(numlists):
+    a=map(int,input().split()[1:])
+    alllists.append(map(lambda x: x**2%mod, a))
+
+#print(list(product(*alllists)))
+print(max(list(map(lambda x:sum(x)%mod,(product(*alllists))))))
