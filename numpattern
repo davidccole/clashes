@@ -1,0 +1,11 @@
+z,e=input,""
+a,c=[int(i) for i in z().split()]
+b,d=[int(i) for i in z().split()]
+r=int(z())
+for i in range(r):
+    e+="{}".format(a)*c+"{}".format(b)*d
+    if a==9:a=0
+    else: a+=1
+    if b==9:b=0
+    else: b+=1
+print(e)
